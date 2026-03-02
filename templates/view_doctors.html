@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Doctors</title>
+</head>
+<body>
+
+<h2>Doctor List</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Name</th>
+        <th>Specialty</th>
+    </tr>
+
+    {% for doctor in doctors %}
+    <tr>
+        <td>{{ doctor.FullName }}</td>
+        <td>{{ doctor.Specialty }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+
+</body>
+</html>

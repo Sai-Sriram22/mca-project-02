@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | Hospital Admin</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-md-2 bg-dark text-white min-vh-100 p-3">
+            <h4 class="text-white mb-4">Hospital Admin</h4>
+            <ul class="nav flex-column">
+
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white" href="{{ url_for('dashboard') }}">
+                        <i class="fa fa-home me-2"></i> Dashboard
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3 text-uppercase small text-secondary">Patients</li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('add_patient') }}">
+                        Add Patient
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('view_patients') }}">
+                        View Patients
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3 text-uppercase small text-secondary">Doctors</li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('add_doctor') }}">
+                        Add Doctor
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('view_doctors') }}">
+                        View Doctors
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3 text-uppercase small text-secondary">Appointments</li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('book_appointment') }}">
+                        Book Appointment
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('view_appointments') }}">
+                        View Appointments
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3">
+                    <a class="nav-link text-white" href="{{ url_for('login_history') }}">
+                        Login History
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3">
+                    <a class="nav-link text-danger" href="{{ url_for('logout') }}">
+                        Logout
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-10 p-4">
+
+            <h2 class="mb-4">Dashboard Overview</h2>
+
+            <!-- Stats Cards -->
+            <div class="row">
+
+                <div class="col-md-3 mb-4">
+                    <div class="card text-white gradient-1 shadow">
+                        <div class="card-body">
+                            <h5>Total Patients</h5>
+                            <h3>120</h3>
+                            <i class="fa fa-user-injured fa-2x float-end"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card text-white gradient-3 shadow">
+                        <div class="card-body">
+                            <h5>Total Doctors</h5>
+                            <h3>25</h3>
+                            <i class="fa fa-user-md fa-2x float-end"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card text-white gradient-6 shadow">
+                        <div class="card-body">
+                            <h5>Today's Appointments</h5>
+                            <h3>18</h3>
+                            <i class="fa fa-calendar-check fa-2x float-end"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="card text-white gradient-9 shadow">
+                        <div class="card-body">
+                            <h5>Total Revenue</h5>
+                            <h3>₹45,000</h3>
+                            <i class="fa fa-rupee-sign fa-2x float-end"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Recent Activity Table -->
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    Recent Login Activity
+                </div>
+                <div class="card-body">
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Login Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>admin@hospital.com</td>
+                                <td>2026-03-01 10:30 AM</td>
+                                <td><span class="badge bg-success">Success</span></td>
+                            </tr>
+                            <tr>
+                                <td>user@test.com</td>
+                                <td>2026-03-01 09:15 AM</td>
+                                <td><span class="badge bg-danger">Failed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

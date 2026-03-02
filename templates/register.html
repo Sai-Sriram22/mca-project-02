@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+
+<head>
+
+	<!-- Title -->
+	<title>ERES - Hospital Admin Dashboard Bootstrap HTML Template</title>
+
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="DexignZone">
+	<meta name="robots" content="">
+
+	<meta name="keywords"
+		content="	admin dashboard, admin template, administration, analytics, bootstrap, disease, doctor, elegant, health, hospital admin, medical dashboard, modern, responsive admin dashboard">
+	<meta name="description"
+		content="Our HTML Admin Dashboard is built with a responsive design, ensuring seamless compatibility across different devices and screen sizes. The user-friendly interface makes navigation intuitive and straightforward for administrators.">
+
+	<meta property="og:title" content="ERES - Hospital Admin Dashboard Bootstrap HTML Template">
+	<meta property="og:description"
+		content="Our HTML Admin Dashboard is built with a responsive design, ensuring seamless compatibility across different devices and screen sizes. The user-friendly interface makes navigation intuitive and straightforward for administrators.">
+	<meta property="og:image" content="https://eres.dexignzone.com/xhtml/social-image.png">
+	<meta name="format-detection" content="telephone=no">
+
+	<!-- Mobile Specific -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Favicon icon -->
+	<link rel="shortcut icon" type="image/x-icon" href="static/static/images/favicon.png">
+
+	<link href="static/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+	<link class="main-css" href="static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="vh-100">
+
+	<div class="authincation h-100">
+		<div class="container h-100">
+			<div class="row justify-content-center h-100 align-items-center">
+				<div class="col-md-6">
+					<div class="authincation-content">
+						<div class="row no-gutters">
+							<div class="col-xl-12">
+								<div class="auth-form">
+									<div class="text-center mb-3">
+										<a href="index.html"><img src="static/images/logo-full.png" alt=""></a>
+									</div>
+									<h4 class="text-center mb-4">Sign up your account</h4>
+									<form method="POST" action="{{ url_for('register_user') }}">
+
+										<div class="form-group">
+											<label class="form-label">Username</label>
+											<input type="text" name="full_name" class="form-control"
+												placeholder="username" required>
+										</div>
+
+										<div class="form-group">
+											<label class="form-label">Email</label>
+											<input type="email" name="email" class="form-control"
+												placeholder="hello@example.com" required>
+										</div>
+
+										<label class="form-label">Password</label>
+										<div class="mb-3 position-relative">
+											<input type="password" id="dz-password" name="password" class="form-control"
+												required>
+											<span class="show-pass eye">
+												<i class="fa fa-eye-slash"></i>
+												<i class="fa fa-eye"></i>
+											</span>
+										</div>
+
+										<div class="text-center mt-4">
+											<button type="submit" class="btn btn-primary btn-block">
+												Sign me up
+											</button>
+										</div>
+
+									</form>
+									<div class="new-account mt-3">
+										<p class="mb-0">Already have an account? <a class="text-primary"
+												href="{{ url_for('home') }}">Sign in</a></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--**********************************
+		Scripts
+	***********************************-->
+	<!-- Required static/vendors -->
+	<script src="static/vendor/global/global.min.static/js"></script>
+	<script src="static/vendor/bootstrap-select/dist/static/js/bootstrap-select.min.static/js"></script>
+	<script src="static/js/custom.min.static/js"></script>
+	<script src="static/js/deznav-init.static/js"></script>
+
+
+
+</body>
+
+</html>
