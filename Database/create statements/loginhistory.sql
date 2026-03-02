@@ -1,0 +1,13 @@
+﻿
+CREATE TABLE dbo.LoginHistory
+(
+    LoginHistoryID UNIQUEIDENTIFIER PRIMARY KEY,
+    UserID UNIQUEIDENTIFIER NOT NULL,
+    Email NVARCHAR(150),
+    LoginTimeUTC DATETIME2 NOT NULL,
+    IPAddress NVARCHAR(50),
+    UserAgent NVARCHAR(300),
+    IsSuccess BIT NOT NULL,
+    FailureReason NVARCHAR(255) NULL
+)
+GO
