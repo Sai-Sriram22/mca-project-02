@@ -77,9 +77,15 @@ FROM Users u;
 
 0431562f-333b-4fe0-b7e6-12826fda4a3c	odsfakjsbdasd,	76	MALE	O879089
 
-SELECT p.PatientID,
-  p.FullName AS Name
- ,p.Age,p.Phone
+SELECT
+  p.PatientID
+ ,p.FullName AS Name
+ ,p.Age
+ ,p.Phone
 FROM Patients p
 WHERE p.PatientID LIKE 'd33cc51d-4468-4a91-b67b-111c5464572b'
 AND p.IsActive = 1;
+
+SELECT TOP 1
+  PasswordHash
+FROM Users;
