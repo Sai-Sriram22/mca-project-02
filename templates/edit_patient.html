@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Doctor | Hospital Admin</title>
+    <title>Edit Patient | Hospital Admin</title>
 
-    <!-- Main CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -18,7 +17,6 @@
         <div class="col-md-2 bg-dark text-white min-vh-100 p-3">
             <h4 class="text-white mb-4">Hospital Admin</h4>
             <ul class="nav flex-column">
-
                 <li class="nav-item mb-2">
                     <a class="nav-link text-white" href="{{ url_for('dashboard') }}">
                         Dashboard
@@ -32,38 +30,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ url_for('view_patients') }}">
+                    <a class="nav-link text-white active" href="{{ url_for('view_patients') }}">
                         View Patients
-                    </a>
-                </li>
-
-                <li class="nav-item mt-3 text-uppercase small text-secondary">Doctors</li>
-                <li class="nav-item">
-                    <a class="nav-link text-white active" href="{{ url_for('add_doctor') }}">
-                        Add Doctor
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ url_for('view_doctors') }}">
-                        View Doctors
-                    </a>
-                </li>
-
-                <li class="nav-item mt-3 text-uppercase small text-secondary">Appointments</li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ url_for('book_appointment') }}">
-                        Book Appointment
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ url_for('view_appointments') }}">
-                        View Appointments
-                    </a>
-                </li>
-
-                <li class="nav-item mt-3">
-                    <a class="nav-link text-white" href="{{ url_for('login_history') }}">
-                        Login History
                     </a>
                 </li>
 
@@ -72,18 +40,17 @@
                         Logout
                     </a>
                 </li>
-
             </ul>
         </div>
 
         <!-- Main Content -->
         <div class="col-md-10 p-4">
 
-            <h2 class="mb-4">Add New Doctor</h2>
+            <h2 class="mb-4">Edit Patient</h2>
 
             <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    Doctor Information
+                <div class="card-header bg-warning text-dark">
+                    Update Patient Information
                 </div>
 
                 <div class="card-body">
@@ -93,28 +60,52 @@
                         <div class="row">
 
                             <div class="col-md-6 mb-3">
-                                <label class="form-label">Doctor Name</label>
-                                <input type="text"
-                                       name="name"
+                                <label class="form-label">Full Name</label>
+                                <input type="text" name="name"
                                        class="form-control"
+                                       value="{{ patient.FullName }}"
                                        required>
                             </div>
 
-                            <div class="col-md-6 mb-3">
-                                <label class="form-label">Specialty</label>
-                                <input type="text"
-                                       name="specialty"
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">Age</label>
+                                <input type="number" name="age"
                                        class="form-control"
+                                       value="{{ patient.Age }}"
                                        required>
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">Gender</label>
+                                <select name="gender" class="form-control" required>
+                                    <option {% if patient.Gender=='Male' %}selected{% endif %}>Male</option>
+                                    <option {% if patient.Gender=='Female' %}selected{% endif %}>Female</option>
+                                    <option {% if patient.Gender=='Other' %}selected{% endif %}>Other</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="text" name="phone"
+                                       class="form-control"
+                                       value="{{ patient.Phone }}"
+                                       required>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">Address</label>
+                                <textarea name="address"
+                                          class="form-control"
+                                          rows="3">{{ patient.Address }}</textarea>
                             </div>
 
                         </div>
 
                         <button type="submit" class="btn btn-success">
-                            Add Doctor
+                            Update Patient
                         </button>
 
-                        <a href="{{ url_for('view_doctors') }}" class="btn btn-secondary">
+                        <a href="{{ url_for('view_patients') }}" class="btn btn-secondary">
                             Cancel
                         </a>
 

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment | Hospital Admin</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Your Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- ================= SIDEBAR ================= -->
+        <div class="col-md-2 bg-dark text-white min-vh-100 p-3">
+            <h4 class="text-white mb-4">Hospital Admin</h4>
+
+            <ul class="nav flex-column">
+
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white" href="{{ url_for('dashboard') }}">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3 text-uppercase small text-secondary">Patients</li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('add_patient') }}">
+                        Add Patient
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('view_patients') }}">
+                        View Patients
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3 text-uppercase small text-secondary">Doctors</li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('add_doctor') }}">
+                        Add Doctor
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('view_doctors') }}">
+                        View Doctors
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3 text-uppercase small text-secondary">Appointments</li>
+                <li class="nav-item">
+                    <a class="nav-link text-white active" href="{{ url_for('book_appointment') }}">
+                        Book Appointment
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('view_appointments') }}">
+                        View Appointments
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3">
+                    <a class="nav-link text-danger" href="{{ url_for('logout') }}">
+                        Logout
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- ================= MAIN CONTENT ================= -->
+        <div class="col-md-10 p-4">
+
+            <!-- Top Navbar -->
+            <nav class="navbar navbar-light bg-light shadow-sm rounded mb-4">
+                <div class="container-fluid">
+                    <span class="navbar-brand mb-0 h4">Book Appointment</span>
+                    <span>Welcome, {{ session['full_name'] }}</span>
+                </div>
+            </nav>
+
+            <!-- Card -->
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Schedule New Appointment</h5>
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST">
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Patient</label>
+                                <select name="patient_id" class="form-select" required>
+                                    <option value="">Select Patient</option>
+                                    {% for p in patients %}
+                                    <option value="{{ p.PatientID }}">{{ p.FullName }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Doctor</label>
+                                <select name="doctor_id" class="form-select" required>
+                                    <option value="">Select Doctor</option>
+                                    {% for d in doctors %}
+                                    <option value="{{ d.DoctorID }}">{{ d.FullName }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Appointment Date</label>
+                                <input type="datetime-local"
+                                       name="appointment_date"
+                                       class="form-control"
+                                       required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label">Reason</label>
+                                <input type="text"
+                                       name="reason"
+                                       class="form-control"
+                                       placeholder="Enter reason"
+                                       required>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ url_for('dashboard') }}"
+                               class="btn btn-secondary">
+                               Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                    Book Appointment
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

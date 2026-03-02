@@ -1,0 +1,27 @@
+<html>
+    
+<body>
+<h2>Appointments</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Patient</th>
+        <th>Doctor</th>
+        <th>Date</th>
+        <th>Reason</th>
+    </tr>
+
+    {% for a in appointments %}
+    <tr>
+        <td>{{ a.PatientName }}</td>
+        <td>{{ a.DoctorName }}</td>
+        <td>{{ a.AppointmentDate }}</td>
+        <td>{{ a.Reason }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="{{ url_for('dashboard') }}">Back</a>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login History | Hospital Admin</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <div class="col-md-2 bg-dark text-white min-vh-100 p-3">
+                <h4 class="text-white mb-4">Hospital Admin</h4>
+
+                <ul class="nav flex-column">
+
+                    <li class="nav-item mb-2">
+                        <a class="nav-link text-white" href="{{ url_for('dashboard') }}">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li class="nav-item mt-3 text-uppercase small text-secondary">Patients</li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('add_patient') }}">
+                            Add Patient
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('view_patients') }}">
+                            View Patients
+                        </a>
+                    </li>
+
+                    <li class="nav-item mt-3 text-uppercase small text-secondary">Doctors</li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('add_doctor') }}">
+                            Add Doctor
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('view_doctors') }}">
+                            View Doctors
+                        </a>
+                    </li>
+
+                    <li class="nav-item mt-3 text-uppercase small text-secondary">Appointments</li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('book_appointment') }}">
+                            Book Appointment
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="{{ url_for('view_appointments') }}">
+                            View Appointments
+                        </a>
+                    </li>
+
+                    <li class="nav-item mt-3">
+                        <a class="nav-link text-white active" href="{{ url_for('login_history') }}">
+                            Login History
+                        </a>
+                    </li>
+
+                    <li class="nav-item mt-3">
+                        <a class="nav-link text-danger" href="{{ url_for('logout') }}">
+                            Logout
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-10 p-4">
+
+                <!-- Page Header -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="fw-bold">Login History</h2>
+                </div>
+
+                <!-- Login History Table -->
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        User Login Activity
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover align-middle">
+
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Full Name</th>
+                                        <th>Email</th>
+                                        <th>IP Address</th>
+                                        <th>Browser</th>
+                                        <th>Status</th>
+                                        <th>Failure Reason</th>
+                                        <th>Date</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% if history %}
+                                    {% for h in history %}
+                                    <tr>
+                                        <td>{{ h.FullName }}</td>
+                                        <td>{{ h.Email }}</td>
+                                        <td>{{ h.IPAddress }}</td>
+                                        <td>{{ h.UserAgent }}</td>
+                                        <td>
+                                            {% if h.IsSuccess == 1 %}
+                                            <span class="badge bg-success">Success</span>
+                                            {% else %}
+                                            <span class="badge bg-danger">Failed</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ h.FailureReason if h.FailureReason else '-' }}</td>
+                                        <td>{{ h.LoginTimeUTC }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="6" class="text-center text-muted">
+                                            No login records found.
+                                        </td>
+                                    </tr>
+                                    {% endif %}
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

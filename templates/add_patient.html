@@ -1,18 +1,147 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Add Patient</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8">
+    <title>Add Patient | Hospital Admin</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
-    <h2>Add Patient</h2>
-    <form method="POST">
-        <input type="text" name="name" placeholder="Full Name" required><br>
-        <input type="number" name="age" placeholder="Age" required><br>
-        <input type="text" name="gender" placeholder="Gender" required><br>
-        <input type="text" name="phone" placeholder="Phone" required><br>
-        <textarea name="address" placeholder="Address"></textarea><br>
-        <button type="submit">Save</button>
-    </form>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Sidebar -->
+        <div class="col-md-2 bg-dark text-white min-vh-100 p-3">
+            <h4 class="text-white mb-4">Hospital Admin</h4>
+            <ul class="nav flex-column">
+
+                <li class="nav-item mb-2">
+                    <a class="nav-link text-white" href="{{ url_for('dashboard') }}">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3 text-uppercase small text-secondary">Patients</li>
+                <li class="nav-item">
+                    <a class="nav-link text-white active" href="{{ url_for('add_patient') }}">
+                        Add Patient
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('view_patients') }}">
+                        View Patients
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3 text-uppercase small text-secondary">Doctors</li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('add_doctor') }}">
+                        Add Doctor
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('view_doctors') }}">
+                        View Doctors
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3 text-uppercase small text-secondary">Appointments</li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('book_appointment') }}">
+                        Book Appointment
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ url_for('view_appointments') }}">
+                        View Appointments
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3">
+                    <a class="nav-link text-white" href="{{ url_for('login_history') }}">
+                        Login History
+                    </a>
+                </li>
+
+                <li class="nav-item mt-3">
+                    <a class="nav-link text-danger" href="{{ url_for('logout') }}">
+                        Logout
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-10 p-4">
+
+            <h2 class="mb-4">Add New Patient</h2>
+
+            <!-- Form Card -->
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    Patient Information
+                </div>
+
+                <div class="card-body">
+
+                    <form method="POST">
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" name="name" class="form-control" required>
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">Age</label>
+                                <input type="number" name="age" class="form-control" required>
+                            </div>
+
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">Gender</label>
+                                <select name="gender" class="form-control" required>
+                                    <option value="">Select</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="text" name="phone" class="form-control" required>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">Address</label>
+                                <textarea name="address" class="form-control" rows="3"></textarea>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn btn-success">
+                            Save Patient
+                        </button>
+
+                        <a href="{{ url_for('view_patients') }}" class="btn btn-secondary">
+                            Cancel
+                        </a>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
